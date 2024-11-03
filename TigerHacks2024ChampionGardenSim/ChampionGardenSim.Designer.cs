@@ -580,7 +580,6 @@
             this.Name = "ChampionGardenSim";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Champion Garden Sim";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.bedSetupPanel.ResumeLayout(false);
             this.bedSetupPanel.PerformLayout();
             this.cropInfoFlowPanel.ResumeLayout(false);
