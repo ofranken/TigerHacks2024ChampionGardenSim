@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.bedSetupPanel = new System.Windows.Forms.Panel();
             this.radio5ft = new System.Windows.Forms.RadioButton();
             this.radio4ft = new System.Windows.Forms.RadioButton();
@@ -57,7 +58,6 @@
             this.qGrowableAreaLabel = new System.Windows.Forms.Label();
             this.qWalkwayAreaLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.basePictureBox = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.instructionLabel = new System.Windows.Forms.Label();
             this.instructionCropComboBox = new System.Windows.Forms.ComboBox();
@@ -69,12 +69,18 @@
             this.heavyFeederLabel = new System.Windows.Forms.Label();
             this.shadeLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.feederHelper = new System.Windows.Forms.PictureBox();
+            this.basePictureBox = new System.Windows.Forms.PictureBox();
+            this.feederShadeTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.shadeHelper = new System.Windows.Forms.PictureBox();
             this.bedSetupPanel.SuspendLayout();
             this.cropInfoFlowPanel.SuspendLayout();
             this.row1Panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.basePictureBox)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.feederHelper)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.basePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shadeHelper)).BeginInit();
             this.SuspendLayout();
             // 
             // bedSetupPanel
@@ -389,17 +395,6 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "***Not all dimension specifications will make use of the garden\'s total area";
             // 
-            // basePictureBox
-            // 
-            this.basePictureBox.BackColor = System.Drawing.Color.DarkGreen;
-            this.basePictureBox.BackgroundImage = global::TigerHacks2024ChampionGardenSim.Properties.Resources.lettuce;
-            this.basePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.basePictureBox.Location = new System.Drawing.Point(450, 117);
-            this.basePictureBox.Name = "basePictureBox";
-            this.basePictureBox.Size = new System.Drawing.Size(500, 500);
-            this.basePictureBox.TabIndex = 8;
-            this.basePictureBox.TabStop = false;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.IndianRed;
@@ -445,7 +440,7 @@
             // plantSpacingLabel
             // 
             this.plantSpacingLabel.AutoSize = true;
-            this.plantSpacingLabel.Location = new System.Drawing.Point(21, 215);
+            this.plantSpacingLabel.Location = new System.Drawing.Point(39, 215);
             this.plantSpacingLabel.Name = "plantSpacingLabel";
             this.plantSpacingLabel.Size = new System.Drawing.Size(121, 23);
             this.plantSpacingLabel.TabIndex = 13;
@@ -454,7 +449,7 @@
             // rowSpacingLabel
             // 
             this.rowSpacingLabel.AutoSize = true;
-            this.rowSpacingLabel.Location = new System.Drawing.Point(21, 250);
+            this.rowSpacingLabel.Location = new System.Drawing.Point(39, 250);
             this.rowSpacingLabel.Name = "rowSpacingLabel";
             this.rowSpacingLabel.Size = new System.Drawing.Size(116, 23);
             this.rowSpacingLabel.TabIndex = 14;
@@ -463,7 +458,7 @@
             // seedDepthLabel
             // 
             this.seedDepthLabel.AutoSize = true;
-            this.seedDepthLabel.Location = new System.Drawing.Point(21, 285);
+            this.seedDepthLabel.Location = new System.Drawing.Point(39, 285);
             this.seedDepthLabel.Name = "seedDepthLabel";
             this.seedDepthLabel.Size = new System.Drawing.Size(106, 23);
             this.seedDepthLabel.TabIndex = 15;
@@ -472,7 +467,7 @@
             // seedsPerLabel
             // 
             this.seedsPerLabel.AutoSize = true;
-            this.seedsPerLabel.Location = new System.Drawing.Point(21, 320);
+            this.seedsPerLabel.Location = new System.Drawing.Point(39, 320);
             this.seedsPerLabel.Name = "seedsPerLabel";
             this.seedsPerLabel.Size = new System.Drawing.Size(201, 23);
             this.seedsPerLabel.TabIndex = 16;
@@ -481,7 +476,7 @@
             // heavyFeederLabel
             // 
             this.heavyFeederLabel.AutoSize = true;
-            this.heavyFeederLabel.Location = new System.Drawing.Point(21, 355);
+            this.heavyFeederLabel.Location = new System.Drawing.Point(39, 355);
             this.heavyFeederLabel.Name = "heavyFeederLabel";
             this.heavyFeederLabel.Size = new System.Drawing.Size(119, 23);
             this.heavyFeederLabel.TabIndex = 17;
@@ -490,7 +485,7 @@
             // shadeLabel
             // 
             this.shadeLabel.AutoSize = true;
-            this.shadeLabel.Location = new System.Drawing.Point(21, 390);
+            this.shadeLabel.Location = new System.Drawing.Point(39, 390);
             this.shadeLabel.Name = "shadeLabel";
             this.shadeLabel.Size = new System.Drawing.Size(135, 23);
             this.shadeLabel.TabIndex = 18;
@@ -499,6 +494,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel2.Controls.Add(this.shadeHelper);
+            this.panel2.Controls.Add(this.feederHelper);
             this.panel2.Controls.Add(this.instructionLabel);
             this.panel2.Controls.Add(this.shadeLabel);
             this.panel2.Controls.Add(this.instructionCropComboBox);
@@ -512,6 +509,51 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(305, 543);
             this.panel2.TabIndex = 19;
+            // 
+            // feederHelper
+            // 
+            this.feederHelper.BackColor = System.Drawing.Color.Transparent;
+            this.feederHelper.BackgroundImage = global::TigerHacks2024ChampionGardenSim.Properties.Resources.tooltip_icon;
+            this.feederHelper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.feederHelper.Cursor = System.Windows.Forms.Cursors.Help;
+            this.feederHelper.Location = new System.Drawing.Point(20, 344);
+            this.feederHelper.Name = "feederHelper";
+            this.feederHelper.Size = new System.Drawing.Size(23, 43);
+            this.feederHelper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.feederHelper.TabIndex = 37;
+            this.feederHelper.TabStop = false;
+            this.feederShadeTooltip.SetToolTip(this.feederHelper, "Heavy feeders require a lot of nutrients. Consider adding fertilizer or compost t" +
+        "o give these plants what they need!");
+            // 
+            // basePictureBox
+            // 
+            this.basePictureBox.BackColor = System.Drawing.Color.DarkGreen;
+            this.basePictureBox.BackgroundImage = global::TigerHacks2024ChampionGardenSim.Properties.Resources.lettuce;
+            this.basePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.basePictureBox.Location = new System.Drawing.Point(450, 117);
+            this.basePictureBox.Name = "basePictureBox";
+            this.basePictureBox.Size = new System.Drawing.Size(500, 500);
+            this.basePictureBox.TabIndex = 8;
+            this.basePictureBox.TabStop = false;
+            // 
+            // feederShadeTooltip
+            // 
+            this.feederShadeTooltip.Tag = "";
+            // 
+            // shadeHelper
+            // 
+            this.shadeHelper.BackColor = System.Drawing.Color.Transparent;
+            this.shadeHelper.BackgroundImage = global::TigerHacks2024ChampionGardenSim.Properties.Resources.tooltip_icon;
+            this.shadeHelper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.shadeHelper.Cursor = System.Windows.Forms.Cursors.Help;
+            this.shadeHelper.Location = new System.Drawing.Point(20, 379);
+            this.shadeHelper.Name = "shadeHelper";
+            this.shadeHelper.Size = new System.Drawing.Size(23, 43);
+            this.shadeHelper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.shadeHelper.TabIndex = 38;
+            this.shadeHelper.TabStop = false;
+            this.feederShadeTooltip.SetToolTip(this.shadeHelper, "Certain plants need lots of sunlight. If a row sees partial shade, avoid planting" +
+        " crops that answer no to this question.");
             // 
             // ChampionGardenSim
             // 
@@ -544,11 +586,13 @@
             this.cropInfoFlowPanel.ResumeLayout(false);
             this.row1Panel.ResumeLayout(false);
             this.row1Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.basePictureBox)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.feederHelper)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.basePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shadeHelper)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -597,6 +641,9 @@
         private System.Windows.Forms.Label heavyFeederLabel;
         private System.Windows.Forms.Label shadeLabel;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox feederHelper;
+        private System.Windows.Forms.ToolTip feederShadeTooltip;
+        private System.Windows.Forms.PictureBox shadeHelper;
     }
 }
 
